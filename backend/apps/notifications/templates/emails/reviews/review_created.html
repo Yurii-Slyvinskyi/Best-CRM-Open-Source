@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Review Notification</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
+    <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 6px; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+        <h2 style="color: #2c3e50;">New Review Created</h2>
+
+        <p style="font-size: 16px; color: #333;">A new review has been Created for the project <strong>{{ project_name }}</strong>.</p>
+
+        <ul style="list-style: none; padding-left: 0; font-size: 15px; color: #444;">
+            <li><strong>Project:</strong> {{ project_name }}</li>
+            <li><strong>Client:</strong> {{ client_name }}</li>
+            <li><strong>Rating:</strong> {{ rating }}/5</li>
+            <li><strong>Review ID:</strong> {{ review_id }}</li>
+            <li><strong>Submitted at:</strong> {{ timestamp }}</li>
+        </ul>
+
+        <p style="font-size: 14px; color: #888; margin-top: 30px;">
+            This message was sent automatically. If you believe this was a mistake, please contact your administrator.
+        </p>
+    </div>
+</body>
+</html>

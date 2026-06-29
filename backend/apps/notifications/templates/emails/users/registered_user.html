@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to our platform!</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
+    <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 6px; padding: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h2 style="color: #2c3e50;">Welcome, {{ username }}!</h2>
+        <p style="font-size: 16px; color: #333;">Your account has been successfully created. Here are your details:</p>
+        <ul style="list-style: none; padding-left: 0; font-size: 15px; color: #444;">
+            <li><strong>Email:</strong> {{ email }}</li>
+            <li><strong>Role:</strong> {{ role }}</li>
+            <li><strong>Company:</strong> {{ company }}</li>
+        </ul>
+        <p style="font-size: 14px; color: #888; margin-top: 30px;">We’re glad to have you on board!</p>
+    </div>
+</body>
+</html>

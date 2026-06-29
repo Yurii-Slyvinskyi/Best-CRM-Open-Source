@@ -1,0 +1,91 @@
+services:
+  postgres:
+    image: postgres:15
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:7
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      target: development
+    environment:
+      SERVICE_NAME: backend
+      DJANGO_SETTINGS_MODULE: backend.settings.dev
+    volumes:
+      - ./backend:/app
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+  celery_worker:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      target: development
+    command: celery -A backend worker --loglevel=info
+    volumes:
+      - ./backend:/app
+    env_file: .env
+    depends_on:
+      - backend
+      - redis
+    environment:
+      SERVICE_NAME: celery_worker
+  daphne:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      target: development
+    command: daphne -b 0.0.0.0 -p 8001 backend.asgi:application
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8001:8001"
+    env_file: .env
+    depends_on:
+      - backend
+      - redis
+    environment:
+      SERVICE_NAME: daphne
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: development
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_API_BASE_URL=http://localhost:8000
+      - VITE_WS_BASE_URL=ws://localhost:8001
+    depends_on:
+      - backend
+      - daphne
+volumes:
+  postgres_data:

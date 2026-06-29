@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Payment Successful</title>
+</head>
+<body style="font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:20px;">
+  <div style="max-width:600px; margin:auto; background:#fff; border-radius:6px; padding:30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <h2 style="color:#2c3e50;">Payment Successful</h2>
+    <p style="font-size:16px; color:#333;">
+      The payment for project <strong>{{ project_name }}</strong> was successful.
+    </p>
+    <ul style="list-style:none; padding-left:0; font-size:15px; color:#444;">
+      <li><strong>Amount:</strong> {{ amount }} {{ currency }}</li>
+      <li><strong>Payment Date:</strong> {{ payment_date }}</li>
+    </ul>
+    <p style="font-size:14px; color:#888; margin-top:30px;">
+      This message was sent automatically.
+    </p>
+  </div>
+</body>
+</html>

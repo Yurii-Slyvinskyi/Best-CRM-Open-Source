@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Salary Created</title>
+</head>
+<body style="font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:20px;">
+  <div style="max-width:600px; margin:auto; background:#fff; border-radius:6px; padding:30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+    <h2 style="color:#2c3e50;">New Salary Payment Created</h2>
+    <p style="font-size:16px; color:#333;">
+      A salary payment has been created for <strong>{{ worker_name }}</strong>.
+    </p>
+    <ul style="list-style:none; padding-left:0; font-size:15px; color:#444;">
+      <li><strong>Amount:</strong> {{ amount }} {{ currency }}</li>
+      <li><strong>Payment Date:</strong> {{ payment_date }}</li>
+      <li><strong>Manager:</strong> {{ manager_name }}</li>
+    </ul>
+    <p style="font-size:14px; color:#888; margin-top:30px;">
+      This message was sent automatically.
+    </p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Your role has been changed</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
+    <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 6px; padding: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h2 style="color: #2c3e50;">Your role has been updated</h2>
+        <p style="font-size: 16px; color: #333;">Your access level in the system has changed:</p>
+        <ul style="list-style: none; padding-left: 0; font-size: 15px; color: #444;">
+            <li><strong>New role:</strong> {{ new_role }}</li>
+            <li><strong>Changed by:</strong> {{ changed_by }}</li>
+            <li><strong>Change time:</strong> {{ change_time }}</li>
+        </ul>
+        <p style="font-size: 14px; color: #888; margin-top: 30px;">If you have any questions, please contact support.</p>
+    </div>
+</body>
+</html>

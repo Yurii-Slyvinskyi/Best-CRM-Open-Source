@@ -1,0 +1,56 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Environment files (never bake secrets into the image)
+.env
+.env.*
+
+# Version control
+.git/
+.gitignore
+.gitattributes
+
+# Frontend (not needed by the backend image; built separately)
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/playwright-report/
+frontend/test-results/
+
+# Static and media files (handled by collectstatic or S3)
+static/
+media/
+staticfiles/
+
+# Logs
+*.log
+logs/
+debug.log
+
+# Local databases
+*.sqlite3
+
+# Pytest / type-check caches
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# IDEs
+.idea/
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Local agent working notes
+AGENTS.md
+CLAUDE.md
